@@ -14,6 +14,13 @@ export enum CharacterId {
   DAVI = 'davi'
 }
 
+export interface User {
+  username: string;
+  email: string;
+  profilePic: string;
+  password?: string; // Em um app real, nunca retornaríamos a senha
+}
+
 export interface Character {
   id: CharacterId;
   name: string;
@@ -33,12 +40,13 @@ export interface Character {
 export interface GameState {
   device: DeviceType;
   currentChapter: number;
-  unlockedChapters: 1;
+  unlockedChapters: number;
   feFragmentada: number;
   selectedCharacter: CharacterId;
   inventory: string[];
   hp: number;
   maxHp: number;
+  lastCheckpointX: number; // Nova propriedade para save de posição
   upgrades: {
     attack: number;
     health: number;
@@ -47,6 +55,7 @@ export interface GameState {
 }
 
 export enum GameStatus {
+  AUTH = 'auth', // Nova tela inicial
   DEVICE_SELECTION = 'device_selection',
   START_SCREEN = 'start_screen',
   STORY_LETTER = 'story_letter',
