@@ -1,4 +1,10 @@
 
+export enum DeviceType {
+  DESKTOP = 'desktop',
+  MOBILE = 'mobile',
+  TABLET = 'tablet'
+}
+
 export enum CharacterId {
   AZIEL = 'aziel',
   TENZIN = 'tenzin',
@@ -25,8 +31,9 @@ export interface Character {
 }
 
 export interface GameState {
+  device: DeviceType;
   currentChapter: number;
-  unlockedChapters: number;
+  unlockedChapters: 1;
   feFragmentada: number;
   selectedCharacter: CharacterId;
   inventory: string[];
@@ -40,6 +47,7 @@ export interface GameState {
 }
 
 export enum GameStatus {
+  DEVICE_SELECTION = 'device_selection',
   START_SCREEN = 'start_screen',
   STORY_LETTER = 'story_letter',
   MENU = 'menu',
