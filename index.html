@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Juízo dos Céus</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=MedievalSharp&family=Spectral:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050505;
+            color: #e2e2e2;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Spectral', serif;
+        }
+        .font-cinzel { font-family: 'Cinzel Decorative', cursive; }
+        .font-medieval { font-family: 'MedievalSharp', cursive; }
+        
+        canvas {
+            display: block;
+            image-rendering: pixelated;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%,
+                rgba(0, 0, 0, 0.1) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.02),
+                rgba(0, 255, 0, 0.01),
+                rgba(0, 0, 255, 0.02)
+            );
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        @keyframes scrollUpLetter {
+            0% { 
+                transform: translateY(45vh); 
+                opacity: 0; 
+                filter: blur(15px);
+            }
+            15% { 
+                transform: translateY(35vh); 
+                opacity: 1; 
+                filter: blur(0);
+            }
+            90% { 
+                opacity: 1; 
+                filter: blur(0);
+            }
+            100% { 
+                transform: translateY(-130%); 
+                opacity: 0; 
+            }
+        }
+
+        .letter-scroll-animation {
+            animation: scrollUpLetter var(--narration-duration, 80s) linear forwards;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        .glitch-text:hover {
+            animation: glitch 0.2s infinite linear;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
